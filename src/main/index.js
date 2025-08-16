@@ -3,12 +3,13 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
+// Crea la ventana principal y configura su comportamiento y preferencias.
 function createWindow() {
-  // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 900,
     height: 670,
     show: false,
+    title: 'powerToysLinux',
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
@@ -17,17 +18,18 @@ function createWindow() {
     }
   })
 
+  // Mostrar la ventana cuando el contenido esté listo.
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
 
+  // Abrir enlaces externos en el navegador por defecto.
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
   })
 
-  // HMR for renderer base on electron-vite cli.
-  // Load the remote URL for development or the local html file for production.
+  // Cargar la URL de desarrollo si existe; en producción, cargar el HTML local.
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
   } else {
@@ -35,40 +37,33 @@ function createWindow() {
   }
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
+// Inicialización de la aplicación: configurar ID, atajos y crear la ventana.
 app.whenReady().then(() => {
-  // Set app user model id for windows
+
+  // Identificador de la aplicación en Windows (para notificaciones y jumplists).
   electronApp.setAppUserModelId('com.electron')
 
-  // Default open or close DevTools by F12 in development
-  // and ignore CommandOrControl + R in production.
-  // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
+  // Habilitar/gestionar atajos útiles en desarrollo y producción.
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
+  // Ejemplo simple de IPC desde renderer a main.
   ipcMain.on('ping', () => console.log('pong'))
 
   createWindow()
 
+  // En macOS, reabrir la ventana si no hay ninguna cuando la app se activa.
   app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
+// Cerrar la aplicación cuando todas las ventanas se cierren (excepto en macOS).
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+// Resto del código específico del proceso principal puede añadirse aquí.
