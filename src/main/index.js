@@ -1,7 +1,6 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
 
 // Crea la ventana principal y configura su comportamiento y preferencias.
 function createWindow() {
@@ -11,7 +10,8 @@ function createWindow() {
     show: false,
     title: 'powerToysLinux',
     autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon } : {}),
+    icon: join(__dirname, '../../resources/icon/icono_128x128.svg'),
+
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
