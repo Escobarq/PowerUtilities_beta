@@ -9,7 +9,7 @@
     "format": "prettier --write .",
     "lint": "eslint --cache .",
     "start": "electron-vite preview",
-    "dev":"dev",
+    "dev": "electron-vite dev",
     "dev:electron": "electron-vite dev",
     "build": "electron-vite build",
     "postinstall": "electron-builder install-app-deps",
@@ -19,7 +19,11 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.2",
     "@electron-toolkit/utils": "^4.0.0",
-    "electron-updater": "^6.3.9"
+    "@tailwindcss/vite": "^4.1.12",
+    "electron-updater": "^6.3.9",
+    "lucide-react": "^0.539.0",
+    "react-icons": "^5.5.0",
+    "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config": "^2.0.0",
