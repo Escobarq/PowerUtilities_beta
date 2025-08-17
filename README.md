@@ -1,4 +1,4 @@
-# powertoyslinux
+# Power Utility
 
 An Electron application with React
 
