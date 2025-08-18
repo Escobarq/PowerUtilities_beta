@@ -8,7 +8,7 @@ function createWindow() {
     width: 900,
     height: 670,
     show: false,
-    title: 'powerToysLinux',
+    title: 'Power Utility',
     autoHideMenuBar: true,
     icon: join(__dirname, '../../resources/icon/icono_128x128.svg'),
 
