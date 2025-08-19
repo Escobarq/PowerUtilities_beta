@@ -1,12 +1,5 @@
 @import 'tailwindcss';
 
-* {
-    /* Text Font */
-
-    font-family: "JetBrains Mono", monospace;
-}
-
-
 body {
     background-color: #2a2a23;
     color: #bfa783; /* color de texto */
