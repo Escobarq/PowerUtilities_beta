@@ -1,0 +1,13 @@
+/* Remove all default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set the font family */
+body {
+    font-family: "JetBrains Mono", monospace;
+    background-color: #2a2a23;
+    color: #bfa783;
+}
