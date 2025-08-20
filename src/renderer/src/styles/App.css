@@ -1,7 +1,4 @@
-/* Remove all default styles */
-* {
-    box-sizing: border-box;
-}
+@import 'tailwindcss';
 
 /* Set the font family */
 body {
