@@ -2,8 +2,6 @@ import './styles/App.css'
 import { Home } from './pages/Home'
 
 function App() {
-  const [open, setOpen] = useState(false); // 👈 aquí defines el estado
-
   return (
     <>
       <Home />
@@ -11,4 +9,4 @@ function App() {
   )
 }
 
-export default App;
+export default App

@@ -23,7 +23,7 @@ export default function SystemInfo({
   return (
     <div className="bg-border gap-y-20 rounded-md p-5 space-y-2">
       <SystemStat label="SISTEMA" value={value.sistema} />
-      <SystemStat label="HERRAMIENTAS ACTIVAS" value={value.herramientas} />
+      <SystemStat label="UTILIDADES ACTIVAS" value={value.herramientas} />
       <SystemStat label="CPU" value={value.cpu} />
       <SystemStat label="RAM" value={value.ram} />
     </div>
