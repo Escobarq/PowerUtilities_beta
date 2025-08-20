@@ -2,7 +2,6 @@ import './styles/App.css'
 import { Home } from './pages/Home'
 
 function App() {
-
   return (
     <>
       <Home />
@@ -10,4 +9,4 @@ function App() {
   )
 }
 
-export default App;
+export default App
