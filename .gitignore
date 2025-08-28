@@ -1,6 +1,3 @@
+build/bin
 node_modules
-dist
-out
-.DS_Store
-.eslintcache
-*.log*
+frontend/dist
